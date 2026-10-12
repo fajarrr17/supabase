@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Dapur Teman</title>
+
+  <style>
+  .stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: #edf7f0;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.stat-card strong {
+  font-size: 26px;
+  color: #198754;
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+  
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #198754;
+      color: white;
+      padding: 22px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px #0000000d;
+    }
+
+    input, button, select {
+      padding: 11px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    button {
+      background: #198754;
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .hidden { display: none; }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    th { background: #edf7f0; }
+
+    td select { min-width: 120px; }
+    #pesan { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dashboard Admin</h1>
+    <p>Dapur Teman — Kelola pesanan pelanggan</p>
+  </header>
+
+  <main>
+    <section class="card" id="loginBox">
+      <h2>Login Admin</h2>
+
+      <form id="loginForm">
+        <label for="email">Email admin</label>
+        <input id="email" type="email" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section class="card hidden" id="dashboard">
+      <h2>Daftar Pesanan</h2>
+
+<div class="stats">
+  <div class="stat-card">
+    <span>Total Pesanan</span>
+    <strong id="totalPesanan">0</strong>
+  </div>
+
+  <div class="stat-card">
+    <span>Pesanan Baru</span>
+    <strong id="pesananBaru">0</strong>
+  </div>
+
+  <div class="stat-card">
+    <span>Pesanan Selesai</span>
+    <strong id="pesananSelesai">0</strong>
+  </div>
+</div>
+
+<input
+  id="cariPesanan"
+  type="search"
+  placeholder="Cari nama pembeli atau makanan..."
+>
+
+<button id="refreshBtn">Muat Ulang</button>
+<button id="logoutBtn">Logout</button>
+
+<p id="pesan" role="status"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>Pembeli</th>
+              <th>Kontak & Alamat</th>
+              <th>Pesanan</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="daftarPesanan"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

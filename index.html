@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Makanan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+
+    <h1>Dapur Naja</h1>
+    <p>Pesan makanan favoritmu di sini!</p>
+  </header>
+
+  <main>
+    <section class="menu">
+      <h2>Menu Makanan</h2>
+
+      <div class="food">
+        <h3>Nasi Ayam</h3>
+        <p>Rp15.000 / porsi</p>
+      </div>
+
+      <div class="food">
+        <h3>Rice Bowl</h3>
+        <p>Rp18.000 / porsi</p>
+      </div>
+    </section>
+
+    <section class="order">
+      <h2>Formulir Pemesanan</h2>
+
+      <form id="orderForm">
+        <label for="nama">Nama lengkap</label>
+        <input id="nama" name="nama"
+          type="text" required>
+
+        <label for="telepon">Nomor telepon</label>
+        <input id="telepon" name="telepon"
+          type="tel" required>
+
+        <label for="alamat">Alamat pengiriman</label>
+        <textarea id="alamat" name="alamat"
+          required></textarea>
+
+        <label for="makanan">Pilih makanan</label>
+        <select id="makanan" name="makanan">
+          <option value="Nasi Ayam">Nasi Ayam - Rp15.000</option>
+          <option value="Rice Bowl">Rice Bowl - Rp18.000</option>
+        </select>
+
+        <label for="jumlah">Jumlah porsi</label>
+        <input id="jumlah" name="jumlah"
+          type="number" min="1" value="1" required>
+
+        <button type="submit">Buat Pesanan</button>
+      </form>
+
+      <p id="pesan"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
